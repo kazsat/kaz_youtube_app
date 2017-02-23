@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user
+  #before_action :logged_in_user, only: :show
   #ユーザー登録フォームの表示
   def new
     @user = User.new
@@ -21,9 +21,9 @@ class UsersController < ApplicationController
   
   #ユーザー画面
   def show
-    @user = User.find(params[:id])
-    if @user.videos.count > 0
-      @video_info = Video.where(params[:id])
+    if User.find(params[:id]).videos.count > 0
+      @user = User.find(params[:id])
+      @video_info = Video.where("user_id = #{params[:id].to_s}")
     end
   end
   
