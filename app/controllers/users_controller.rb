@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   #ユーザー画面
   def show
     @user = User.find(params[:id])
+    if @user.videos.count > 0
+      @video_info = Video.where(params[:id])
+    end
   end
   
   
