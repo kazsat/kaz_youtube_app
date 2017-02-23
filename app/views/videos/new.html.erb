@@ -6,7 +6,7 @@
     <%= form_for(@video) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
-      <%= f.label :title,"title(必須)" %>
+      <%= f.label :title,"動画タイトル(必須)" %>
       <%= f.text_field :title, class: "form-control" %>
 
       <%= f.label :description,"概要(300文字以内)" %>
