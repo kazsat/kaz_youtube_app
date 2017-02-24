@@ -1,15 +1,18 @@
 class VideosController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]
-  before_action :correct_user,   only: [:show]
+  #before_action :correct_user,   only: [:show]
   
-  #自分の動画の表示(他人は見えない)
+  #自分の動画の表示(他人にも見える)
   def show
-    @user = current_user
+    @user = User.find_by(id: params[:id])
     #ビデオが1個以上あればすべて取り出す。
-    if User.find(params[:id]).videos.count > 0
+    if @user.videos.count > 0
       @video_info = Video.where("user_id = #{params[:id].to_s}")
+    else
+      redirect_to current_user
     end
   end
+  
   
   #投稿画面の表示
   def new
