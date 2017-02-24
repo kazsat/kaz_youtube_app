@@ -27,6 +27,14 @@ class UsersController < ApplicationController
     end
   end
   
+  #ユーザー情報編集画面の表示
+  def edit
+    @user = User.new(user_params)
+  end
+  
+  #ユーザー情報編集
+  def update
+  end
   
   #ストロングパラメータ
   def user_params

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :name,"名前" %>
+      <%= f.text_field :name,class: "form-control" %>
+
+      <%= f.label :email,"メールアドレス" %>
+      <%= f.email_field :email,class: "form-control" %>
+
+      <%= f.label :password,"パスワード(英数字を組み合わせて8文字以上)" %>
+      <%= f.password_field :password,class: "form-control" %>
+
+      <%= f.label :password_confirmation, "パスワードの再入力" %>
+      <%= f.password_field :password_confirmation,class: "form-control" %>
+
+      <%= f.submit class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
