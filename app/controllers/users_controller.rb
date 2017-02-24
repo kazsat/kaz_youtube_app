@@ -22,22 +22,36 @@ class UsersController < ApplicationController
     end
   end
   
-  #ユーザー画面(他人も見れる)
+  #ユーザー画面(他人は見れない)
   def show
-    @user = User.find(params[:id])
-    
+    @user = User.find_by(id: params[:id])
+    #管理者なら全員のprofileを見れる
+    if admin_user?
+      render "show"
+    #他人のprofileにアクセスしようとしたらホームへ
+    elsif @user != current_user 
+      flash[:danger] = "不正なアクセスです" 
+      redirect_to root_path
+    end
+  end
+  
+  #すべてのユーザー(adminのみが見れる)
+  def everybody
+    @user = User.all if admin_user?
   end
   
   #ユーザー情報編集画面の表示
   def edit
+    @user = User.find_by(id: params[:id])
   end
   
   #ユーザー情報編集
   def update
-    if @current_user.update_attributes(user_params)
+    @user =User.find_by(id:params[:id])
+    if @user.update_attributes(user_params)
       #編集に成功した時
       flash[:success] = "編集しました"
-      redirect_to @current_user
+      redirect_to @user
     else
       #編集に失敗した時
       render "edit"

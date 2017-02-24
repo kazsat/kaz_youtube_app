@@ -1,0 +1,17 @@
+<%provide(:title,"すべてのユーザー")%>
+<div class="container">
+  <div class="row">
+    <section class="col-md-10">
+      <% @user.each do |u| %>
+      <%= link_to "動画一覧", video_path(u) %> | 
+      <%= link_to "編集",edit_user_path(u) %> | 
+      <% if not admin_user?(u)%>
+      <%= link_to "アカウント削除",u, method: :delete,
+                                      data: {confirm: "本当に削除してもよろしいですか？"}%>
+      <%end%>
+      <%=render "shared/profile",object: u %>
+      <hr>
+      <%end%>
+    </section>
+  </div>
+</div>

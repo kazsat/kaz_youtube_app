@@ -14,6 +14,11 @@ module SessionsHelper
     !current_user.nil?
   end
   
+  #ユーザーが管理者ならtrue
+  def admin_user?(user = current_user)
+    user.admin
+  end
+  
   #ログアウト
   def log_out
     session.delete(:user_id)
@@ -23,7 +28,9 @@ module SessionsHelper
   # 正しいユーザーかどうか確認
   def correct_user
       @user = User.find(params[:id])
+    if !current_user.admin
       redirect_to(root_url) unless @user == current_user
+    end
   end
   
   # 記憶したURL (もしくはデフォルト値) にリダイレクト

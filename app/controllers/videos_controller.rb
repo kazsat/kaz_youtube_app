@@ -8,8 +8,6 @@ class VideosController < ApplicationController
     #ビデオが1個以上あればすべて取り出す。
     if @user.videos.count > 0
       @video_info = Video.where("user_id = #{params[:id].to_s}")
-    else
-      redirect_to current_user
     end
   end
   

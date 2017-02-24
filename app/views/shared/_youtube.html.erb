@@ -7,11 +7,13 @@
       <p>シェア数: <%= info.score%></p>
       <p><%= info.description%></p>
       
-      <%if @user == current_user || current_user.admin %>
+      <%if @user == current_user || admin_user? %>
       <%= link_to "編集する",edit_video_path(info)%> | 
       <%= link_to "削除する",video_path(info),method: :delete,
                              data: {confirm: "本当に削除してもよろしいですか？"} %>
       <%end%>
       <hr>
     <%end%>
+  <%else%>
+    <p>まだ動画を投稿していません。</p>
   <%end%>
