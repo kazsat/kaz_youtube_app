@@ -1,17 +1,29 @@
-<% provide(:title, "#{@user.name}の動画一覧") %>
+<% provide(:title, "#{@user.name}のプロフィール") %>
 <div class="row">
-  <aside class="col-md-6">
-    <section class="user_info">
-      <h1>
-        <%= @user.name %>
-        
-      </h1>
+    <section class="user_info col-md-6">
+    <div class="panel panel-info">
+    <div class="panel-heading">プロフィール</div>
+    <!--<div class="panel-body"></div>-->
+      <ul class="list-group">
+        <li class="list-group-item"><%= @user.name%></li>
+        <li class="list-group-item"><%= @user.email%></li>
+      </ul>
+  </div>
+    <p>
+      <%= link_to "編集する",edit_user_path(@user) %>
       
-    </section>
-  </aside>
-  <section>
-    
-        <%= render "shared/youtube"%>
-       
+    </p>
   </section>
+  <section>
+    <div class="panel panel-danger">
+    <div class="panel-heading">アカウントの削除</div>
+    <!--<div class="panel-body"></div>-->
+      <ul class="list-group">
+        <li class="list-group-item"><%= link_to " アカウントの削除", @user, method: :delete,
+                                                                      data: {confirm: "本当に削除してもよろしいですか？"} %></li>
+      </ul>
+  </div>
+  </section>
+
+  
 </div>

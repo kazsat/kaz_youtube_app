@@ -6,5 +6,9 @@
       </div>
       <p>シェア数: <%= info.score%></p>
       <p><%= info.description%></p>
+      <%= link_to "編集する",edit_video_path(info)%>
+      <%= link_to "削除する",video_path(info),method: :delete,
+                             data: {confirm: "本当に削除してもよろしいですか？"} %>
+      <hr>
     <%end%>
   <%end%>

@@ -1,22 +1,6 @@
 <% provide(:title, '投稿') %>
 <h1>動画を投稿する</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@video) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      
-      <%= f.label :title,"動画タイトル(必須)" %>
-      <%= f.text_field :title, class: "form-control" %>
-
-      <%= f.label :description,"概要(300文字以内)" %>
-      <%= f.text_area :description,class: "form-control" %>
-
-      <%= f.label :url,"動画URL(必須)" %>
-      <%= f.text_field :url,placeholder: "https://www.youtube.com/watch?v=sample",class: "form-control" %>
-      
-
-      <%= f.submit "動画を投稿する", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+<div class="container">
+  <%= render "video_form"%>  
 </div>

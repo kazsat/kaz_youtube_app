@@ -1,5 +1,15 @@
 class VideosController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]
+  before_action :correct_user,   only: [:show]
+  
+  #自分の動画の表示(他人は見えない)
+  def show
+    @user = current_user
+    #ビデオが1個以上あればすべて取り出す。
+    if User.find(params[:id]).videos.count > 0
+      @video_info = Video.where("user_id = #{params[:id].to_s}")
+    end
+  end
   
   #投稿画面の表示
   def new
@@ -19,10 +29,35 @@ class VideosController < ApplicationController
     end
   end
   
+  
+  #動画編集画面
+  def edit
+    @video = Video.find_by(id: params[:id])
+  end
+  
+  #動画編集
+  def update
+    @video = Video.find_by(id: params[:id])
+    if @video.update_attributes(video_params)
+      #編集に成功
+      flash[:success] = "編集しました"
+      redirect_to video_path @video.user_id
+    else
+      #編集に失敗
+      render "edit"
+    end  
+  end
+  
+  
   #投稿の削除
   def destroy
-  
+    
+    video =Video.find(params[:id])
+    video.destroy
+    flash[:success] = "動画は削除されました"
+    redirect_to video_path video.user_id
   end
+  
   
   private
   

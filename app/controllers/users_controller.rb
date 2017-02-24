@@ -25,9 +25,7 @@ class UsersController < ApplicationController
   #ユーザー画面(他人も見れる)
   def show
     @user = User.find(params[:id])
-    if User.find(params[:id]).videos.count > 0
-      @video_info = Video.where("user_id = #{params[:id].to_s}")
-    end
+    
   end
   
   #ユーザー情報編集画面の表示
@@ -44,6 +42,12 @@ class UsersController < ApplicationController
       #編集に失敗した時
       render "edit"
     end
+  end
+  
+  def destroy
+  User.find(params[:id]).destroy
+    flash[:success] = "ユーザーは削除されました"
+    redirect_to root_path
   end
   
   #ストロングパラメータ
