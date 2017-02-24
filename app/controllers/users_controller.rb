@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  #before_action :logged_in_user, only: :show
+  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :correct_user,   only: [:edit, :update]
+  
+  
   #ユーザー登録フォームの表示
   def new
     @user = User.new
@@ -19,7 +22,7 @@ class UsersController < ApplicationController
     end
   end
   
-  #ユーザー画面
+  #ユーザー画面(他人も見れる)
   def show
     @user = User.find(params[:id])
     if User.find(params[:id]).videos.count > 0
@@ -29,11 +32,18 @@ class UsersController < ApplicationController
   
   #ユーザー情報編集画面の表示
   def edit
-    @user = User.new(user_params)
   end
   
   #ユーザー情報編集
   def update
+    if @current_user.update_attributes(user_params)
+      #編集に成功した時
+      flash[:success] = "編集しました"
+      redirect_to @current_user
+    else
+      #編集に失敗した時
+      render "edit"
+    end
   end
   
   #ストロングパラメータ

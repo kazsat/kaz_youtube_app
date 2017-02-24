@@ -9,8 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       #ログイン成功時
       log_in(user)
-      redirect_to user
-      
+      redirect_back_or user
     else
       #ログイン失敗時
       flash.now[:danger] = "ログイン情報が正しくありません"

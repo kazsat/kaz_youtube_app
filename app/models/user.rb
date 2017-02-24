@@ -8,6 +8,7 @@ class User < ApplicationRecord
                                   uniqueness: {case_sensitive: false}
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i                               
   validates :password,presence: true,length: {minimum:8},
-                                     format: {with: VALID_PASSWORD_REGEX}
+                                     format: {with: VALID_PASSWORD_REGEX},
+                                     allow_nil: true
   has_secure_password
 end
