@@ -22,7 +22,7 @@ class VideosController < ApplicationController
     if @video.save
       #投稿成功時
       flash[:success] = "投稿に成功しました！"
-      redirect_to user_path(current_user)
+      redirect_to video_path(current_user)
     else
       #投稿失敗時
       render "new"
