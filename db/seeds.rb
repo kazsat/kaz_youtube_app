@@ -11,13 +11,20 @@ User.create(name: "admin" , email: "test@test.com" , password: "1234567a" , pass
   User.create(name: "i am #{t+2}",email: "#{t+2}@test.com" , password: "1234567a", password_confirmation: "1234567a")
 end
 
+Category.create(category: "英語")
+Category.create(category: "数学")
+Category.create(category: "社会")
+Category.create(category: "理科")
+Category.create(category: "国語")
+
+
 User.all.each do |user|
   if !user.admin
-    user.videos.create(title: "my movie" , description: "description", url: "https://www.youtube.com/watch?v=qV5lzRHrGeg")
+    v = user.videos.create(title: "my movie" , description: "description", url: "https://www.youtube.com/watch?v=qV5lzRHrGeg")
+    v.video_category_relationships.create(category_id: 1)
+    v.video_category_relationships.create(category_id: 2)
+    v.video_category_relationships.create(category_id: 3)
+    v.video_category_relationships.create(category_id: 4)
+    
   end
 end
-
-User.second.videos.create(title: "mine" , description: "description", url: "https://www.youtube.com/watch?v=fWNaR-rxAic")
-User.second.videos.create(title: "von jour" , description: "description", url: "https://www.youtube.com/watch?v=AJtDXIazrMo")
-User.third.videos.create(title: "tecj" , description: "description", url: "https://www.youtube.com/watch?v=lWA2pjMjpBs")
-User.third.videos.create(title: "lie to me " , description: "i dare you", url: "https://www.youtube.com/watch?v=JF8BRvqGCNs")
