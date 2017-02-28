@@ -1,1 +1,10 @@
 <% provide(:title, "ホーム")%>
+
+
+<ul>
+  <% @static_pages.each do |category|%>
+  <li class="all-categories">
+    <%= category.category %>
+  </li>
+  <%end%>
+</ul>

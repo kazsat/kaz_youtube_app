@@ -3,7 +3,7 @@ class Video < ApplicationRecord
   has_many :video_category_relationships,
                                          dependent: :destroy
   has_many :categories, through: :video_category_relationships
- 
+  
   default_scope -> { order(created_at: :desc) }
   validates :user_id,presence:true
   validates :title,presence:true,length: {maximum:50}
