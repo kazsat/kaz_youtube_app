@@ -13,7 +13,7 @@
       <%= f.text_field :url,placeholder: "https://www.youtube.com/watch?v=sample",class: "form-control" %>
       
       <%= f.label :category_ids,"カテゴリ" %>
-      <%= f.select :category_ids, @categories,prompt: "選択してください",value: 1,class: "form-control"%>
+      <%= f.select :category_ids, @categories,class: "form-control"%>
 
 
       <%= f.submit class: "btn btn-primary" %>
