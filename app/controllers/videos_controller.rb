@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]
   before_action :set_categories, only: [:new,:create, :edit] 
+  
   #自分の動画の表示(他人にも見える)
   def show
     @user = User.find_by(id: params[:id])
@@ -59,14 +60,15 @@ class VideosController < ApplicationController
   end
   
   
+  
   private
   
     def video_params
-      params.require(:video).permit(:title, :description , :url,:category_ids)
+      params.require(:video).permit(:title, :description , :url,:category_ids,:parent_id)
     end
     
     #カテゴリ一覧をDBからとりだす
     def set_categories
-      @categories = Category.all.pluck(:category, :id)
+      @categories = Category.all.pluck(:category, :id,:parent_id)
     end 
 end

@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-sm-9">  
+    <ul class="list-theme">
+      <% @themes.each do |theme|%>
+      <li><%= link_to theme.category, action: "index",theme: theme.id %></li>
+      <%end%>
+    </ul>
+  </div>
+</div>

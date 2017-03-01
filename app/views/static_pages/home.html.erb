@@ -4,7 +4,7 @@
 <ul>
   <% @static_pages.each do |category|%>
   <li class="all-categories">
-    <%= category.category %>
+    <%= link_to category.category, category_path(category.id) %>
   </li>
   <%end%>
 </ul>

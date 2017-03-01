@@ -13,9 +13,14 @@
       <%= f.text_field :url,placeholder: "https://www.youtube.com/watch?v=sample",class: "form-control" %>
       
       <%= f.label :category_ids,"カテゴリ" %>
-      <%= f.select :category_ids, @categories,class: "form-control"%>
-
-
+      <%= f.select :category_ids, @categories,class:"form-control" %>
+      
+     <%= select_tag 'parent_id', options_for_select(nested_set_options(Category) do 
+     |i| "#{'-' * i.level} #{i.category}"
+     end ),class:"form-control" %>
+     
+    
+ 
       <%= f.submit class: "btn btn-primary" %>
     <% end %>
   </div>

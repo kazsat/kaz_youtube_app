@@ -1,4 +1,5 @@
 class Video < ApplicationRecord
+  #acts_as_nested_set
   belongs_to :user
   has_many :video_category_relationships,
                                          dependent: :destroy
