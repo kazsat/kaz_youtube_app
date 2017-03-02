@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     #管理者なら全員のprofileを見れる
-    if admin_user?
+    if logged_in? && admin_user?
       render "show"
     #他人のprofileにアクセスしようとしたらホームへ
     elsif @user != current_user 

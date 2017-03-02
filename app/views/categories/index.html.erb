@@ -1,0 +1,12 @@
+<%provide(:title, "テーマ")%>
+  <div class="row">
+    <div class="col col-xs-9">
+    <section>
+    <% if @videos.count > 0%>
+      <%= render "shared/youtube"%>
+    <%else%>
+      <p>まだ動画を投稿されていません。</p>
+    <%end%>
+   </section>
+   </div>
+  </div>

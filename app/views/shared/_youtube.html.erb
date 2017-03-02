@@ -1,27 +1,27 @@
-  <% if @user.videos.count > 0%>
-    <% @video_info.each do |info| %>
+  
+    <% @videos.each do |video| %>
       <p>
         カテゴリ :
-        <% info.categories.each_with_index do |category,count|%>
+        <% video.categories.each_with_index do |category,count|%>
         <%=" , " if count > 0  %>
         <%=category.category%>
         <%end%>
       </p>
       
-      <h3><%= info.title %></h3>
+      <h3><%= video.title %></h3>
       <div class="youtube-container">        
-        <iframe src="https://www.youtube.com/embed/<%= create_video_id info.url %>" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+        <iframe src="https://www.youtube.com/embed/<%= create_video_id video.url %>" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
       </div>
-      <p>シェア数: <%= info.score%></p>
-      <p><%= info.description%></p>
+      <p>シェア数: <%= video.score%></p>
+      <p><%= video.description%></p>
       
-      <%if @user == current_user || admin_user? %>
-      <%= link_to "編集する",edit_video_path(info)%> | 
-      <%= link_to "削除する",video_path(info),method: :delete,
+      <% if logged_in? %>
+        <%if current_user == video.user || admin_user? %>
+        <%= link_to "編集する",edit_video_path(video)%> | 
+        <%= link_to "削除する",video_path(video),method: :delete,
                              data: {confirm: "本当に削除してもよろしいですか？"} %>
+        <%end%>
       <%end%>
       <hr>
     <%end%>
-  <%else%>
-    <p>まだ動画を投稿していません。</p>
-  <%end%>
+  

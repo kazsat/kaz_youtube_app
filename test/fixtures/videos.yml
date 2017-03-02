@@ -4,12 +4,12 @@ one:
   title: MyString
   description: MyText
   url: MyString
-  pv: 1
+  score: 1
   user: one
 
 two:
   title: MyString
   description: MyText
   url: MyString
-  pv: 1
+  score: 1
   user: two

@@ -1,10 +1,13 @@
 <%provide(:title, "Mytubes")%>
-<div class="container">
   <div class="row">
     <div class="col col-md-6">
     <section>
-        <%= render "shared/youtube"%>
+    <% if @user.videos.count > 0%>
+      <%= render "shared/youtube"%>
+      
+    <%else%>
+      <p>まだ動画を投稿していません。</p>
+    <%end%>
    </section>
    </div>
   </div>
-</div>

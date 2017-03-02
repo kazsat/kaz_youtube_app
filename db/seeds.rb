@@ -52,10 +52,25 @@ root5.children.create(category: "国語検定")
 
 User.all.each do |user|
   if !user.admin
-    v = user.videos.create(title: "my movie" , description: "description", url: "https://www.youtube.com/watch?v=qV5lzRHrGeg")
- 
-    v.video_category_relationships.create(category_id: root1.id)
-    v.video_category_relationships.create(category_id: root1.children.first.id)
+    v1 = user.videos.create(title: "my movie" , description: "description", url: "https://www.youtube.com/watch?v=qV5lzRHrGeg")
+    v1.video_category_relationships.create(category_id: root1.id)
+    v1.video_category_relationships.create(category_id: root1.children.first.id)
+    
+    v2 = user.videos.create(title: "my movie" , description: "description", url: "https://www.youtube.com/watch?v=YaUj3CrTyHA")
+    v2.video_category_relationships.create(category_id: root2.id)
+    v2.video_category_relationships.create(category_id: root2.children.first.id)
+    
+    v3 = user.videos.create(title: "my movie" , description: "description", url: "https://www.youtube.com/watch?v=2zNSgSzhBfM")
+    v3.video_category_relationships.create(category_id: root3.id)
+    v3.video_category_relationships.create(category_id: root3.children.first.id)
+    
+    v4 = user.videos.create(title: "my movie" , description: "description", url: "https://www.youtube.com/watch?v=ktvTqknDobU")
+    v4.video_category_relationships.create(category_id: root4.id)
+    v4.video_category_relationships.create(category_id: root4.children.first.id)
+    
+    v5 = user.videos.create(title: "my movie" , description: "description", url: "https://www.youtube.com/watch?v=hT_nvWreIhg")
+    v5.video_category_relationships.create(category_id: root5.id)
+    v5.video_category_relationships.create(category_id: root5.children.first.id)
     
   end
 end

@@ -6,7 +6,7 @@ class VideosController < ApplicationController
     @user = User.find_by(id: params[:id])
     #ビデオが1個以上あればすべて取り出す。
     if @user.videos.count > 0
-      @video_info = Video.where("user_id = #{params[:id].to_s}")
+      @videos = Video.where("user_id = #{params[:id].to_s}")
     end
   end
   

@@ -2,8 +2,8 @@
 
 one:
   video_id: 1
-  category_id: 1
+  category_id: 2
 
 two:
-  video_id: 1
-  category_id: 1
+  video_id: 2
+  category_id: 3
