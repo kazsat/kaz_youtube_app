@@ -12,16 +12,31 @@
       <%= f.label :url,"動画URL(必須)" %>
       <%= f.text_field :url,placeholder: "https://www.youtube.com/watch?v=sample",class: "form-control" %>
       
-      <%= f.label :category_ids,"カテゴリ" %>
-      <%= f.select :category_ids, @categories,class:"form-control" %>
-      
-     <%= select_tag 'parent_id', options_for_select(nested_set_options(Category) do 
-     |i| "#{'-' * i.level} #{i.category}"
-     end ),class:"form-control" %>
+      <%= label_tag :video_category , "カテゴリー" %>
+      <%= select_tag "video[category_ids][]", options_from_collection_for_select(@parent_categories, :id, :category,
+                                            { selected: @parent_category_id }) , { class: "form-control" , id: "video_category" } %>
      
+      <div id="children">
+        <% if @child_category %>
+          <%= label_tag :video_sub_category , "サブカテゴリー" %>
+          <%= select_tag "video[category_ids][]", options_from_collection_for_select(@parent_category.children, :id, :category,
+                                                { selected: @child_category.id }) , { class: "form-control" , id: "video_sub_category" } %>
+        <% end %>
+      </div>     
     
  
       <%= f.submit class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
+
+<script>
+$(function() {
+    $('#video_category').change(function() {
+      $.post({
+        url: "<%= category_videos_path %>",
+        data: { category_id: $('#video_category').has('option:selected').val() , format: "js" }
+      });
+    });
+  });
+</script>

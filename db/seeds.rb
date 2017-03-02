@@ -53,10 +53,9 @@ root5.children.create(category: "国語検定")
 User.all.each do |user|
   if !user.admin
     v = user.videos.create(title: "my movie" , description: "description", url: "https://www.youtube.com/watch?v=qV5lzRHrGeg")
-    v.video_category_relationships.create(category_id: 1)
-    v.video_category_relationships.create(category_id: 2)
-    v.video_category_relationships.create(category_id: 3)
-    v.video_category_relationships.create(category_id: 4)
+ 
+    v.video_category_relationships.create(category_id: root1.id)
+    v.video_category_relationships.create(category_id: root1.children.first.id)
     
   end
 end

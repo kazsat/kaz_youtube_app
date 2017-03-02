@@ -10,8 +10,12 @@ Rails.application.routes.draw do
   delete '/logout',    to: 'sessions#destroy'
   
   resources :users, except: [:new]
-  resources :videos
   resources :categories, only: [:show,:index]
+  resources :videos do
+    collection do
+      post :category
+    end
+  end
  
 end
 

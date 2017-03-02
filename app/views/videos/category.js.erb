@@ -1,0 +1,5 @@
+<% if @parent_category.children.present? %>
+$('#children').html('<%= j(label_tag :video_sub_category , "テーマ") %><%= j(select_tag "video[category_ids][]", options_from_collection_for_select(@parent_category.children, :id, :category),{ class: "form-control" , id: "video_sub_category"})%>');
+<% else %>
+$('#children').html('');
+<% end %>
