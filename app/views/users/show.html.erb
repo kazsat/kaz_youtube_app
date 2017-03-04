@@ -5,8 +5,10 @@
     <section>
     <p>
       <span><%= @user.name %></span>
-      <% if (logged_in? && @user == current_user) || (logged_in? && admin_user?) %>
-      <%= link_to "編集する",edit_user_path(@user) %>
+      <%if logged_in? %>
+        <% if @user == current_user || admin_user? %>
+        <%= link_to "編集する",edit_user_path(@user) %>
+        <%end%>
       <%end%>
     </p>
     </section>

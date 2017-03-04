@@ -1,13 +1,11 @@
 class VideosController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]
   
-  #自分の動画の表示(他人にも見える)
+  #個別動画
   def show
-    @user = User.find_by(id: params[:id])
-    #ビデオが1個以上あればすべて取り出す。
-    if @user.videos.count > 0
-      @videos = Video.where("user_id = #{params[:id].to_s}")
-    end
+    @videos = []
+    @videos[0] = Video.find_by(id: params[:id])
+   
   end
   
   
@@ -44,7 +42,7 @@ class VideosController < ApplicationController
     if @video.update_attributes(video_params)
       #編集に成功
       flash[:success] = "編集しました"
-      redirect_to video_path @video.user_id
+      redirect_to video_path @video.id
     else
       #編集に失敗
       set_categories(@video)
