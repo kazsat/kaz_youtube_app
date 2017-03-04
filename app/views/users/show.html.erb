@@ -7,11 +7,11 @@
   <section>
     <div class="panel panel-danger">
     <div class="panel-heading">アカウントの削除</div>
-    <!--<div class="panel-body"></div>-->
-      <ul class="list-group">
-        <li class="list-group-item"><%= link_to " アカウントの削除", @user, method: :delete,
-                                                                      data: {confirm: "本当に削除してもよろしいですか？"} %></li>
-      </ul>
+    <ul class="list-group">
+      <li class="list-group-item"><%= link_to " アカウントの削除",
+                @user, method: :delete,data: {confirm: "本当に削除してもよろしいですか？"} %>
+      </li>
+    </ul>
   </div>
   </section>
 

@@ -13,14 +13,13 @@
       <%= f.text_field :url,placeholder: "https://www.youtube.com/watch?v=sample",class: "form-control" %>
       
       <%= label_tag :video_category , "カテゴリー" %>
-      <%= select_tag "video[category_ids][]", options_from_collection_for_select(@parent_categories, :id, :category,
-                                            { selected: @parent_category_id }) , { class: "form-control" , id: "video_category" } %>
+      <%= select_tag "video[category_ids][]", options_from_collection_for_select(@parent_categories, :id, :category,{ selected: @parent_category_id}) ,
+      { class: "form-control" , id: "video_category" } %>
      
       <div id="children">
         <% if @child_category %>
           <%= label_tag :video_sub_category , "サブカテゴリー" %>
-          <%= select_tag "video[category_ids][]", options_from_collection_for_select(@parent_category.children, :id, :category,
-                                                { selected: @child_category.id }) , { class: "form-control" , id: "video_sub_category" } %>
+          <%= select_tag "video[category_ids][]", options_from_collection_for_select(@parent_category.children, :id, :category,selected: @child_category.id) , { class: "form-control" , id: "video_sub_category"} %>
         <% end %>
       </div>     
     
