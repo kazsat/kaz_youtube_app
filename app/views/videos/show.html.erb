@@ -1,13 +1,13 @@
-<%provide(:title, "Mytubes")%>
+<%provide(:title, "Mytube")%>
   <div class="row">
-    <div class="col col-md-6">
+    <div class="col-md-6 col-md-offset-3">
     <section>
-    <% if @user.videos.count > 0%>
-      <%= render "shared/youtube"%>
-      
-    <%else%>
-      <p>まだ動画を投稿していません。</p>
-    <%end%>
-   </section>
+        <%= render "shared/youtube"%>
+        <%if logged_in? %>
+          <%if current_user == @videos[0].user || admin_user? %>
+          <%= link_to "一覧ページへ戻る", user_path(current_user) %>
+          <%end%>
+        <%end%>
+    </section>
    </div>
   </div>

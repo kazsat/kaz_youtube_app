@@ -22,18 +22,11 @@ class UsersController < ApplicationController
     end
   end
   
-  #ユーザー画面(他人は見れない)
+  #ユーザー画面
   def show
     @user = User.find_by(id: params[:id])
-    #管理者なら全員のprofileを見れる
-    if logged_in? && admin_user?
-      render "show"
-    #他人のprofileにアクセスしようとしたらホームへ
-    elsif @user != current_user 
-      flash[:danger] = "不正なアクセスです" 
-      redirect_to root_path
+    @videos = @user.videos
     end
-  end
   
   #すべてのユーザー(adminのみが見れる)
   def everybody
