@@ -9,6 +9,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       #ログイン成功時
       log_in(user)
+      #チックボックスがチェックされていたらcookieに永続セッション情報を記憶する
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_back_or root_url
     else
       #ログイン失敗時
@@ -19,7 +21,7 @@ class SessionsController < ApplicationController
   
   #ログアウト
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 end
