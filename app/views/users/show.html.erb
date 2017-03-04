@@ -1,19 +1,24 @@
 <% provide(:title, "#{@user.name}のプロフィール") %>
-<div class="row">
-  <section class="user_info col-md-6">
-    <%= render "shared/profile",object: @user%>  
-    <p><%= link_to "編集する",edit_user_path(@user) %></p>
-  </section>
-  <section>
-    <div class="panel panel-danger">
-    <div class="panel-heading">アカウントの削除</div>
-    <!--<div class="panel-body"></div>-->
-      <ul class="list-group">
-        <li class="list-group-item"><%= link_to " アカウントの削除", @user, method: :delete,
-                                                                      data: {confirm: "本当に削除してもよろしいですか？"} %></li>
-      </ul>
-  </div>
-  </section>
 
-  
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <section>
+    <p>
+      <span><%= @user.name %></span>
+      <% if (logged_in? && @user == current_user) || (logged_in? && admin_user?) %>
+      <%= link_to "編集する",edit_user_path(@user) %>
+      <%end%>
+    </p>
+    </section>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <section>
+    <p><%= render "shared/youtube" %></p>
+    </section>
+  </div>
 </div>

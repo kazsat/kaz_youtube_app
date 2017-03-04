@@ -17,5 +17,10 @@
 
       <%= f.submit class: "btn btn-primary" %>
     <% end %>
+    
+    <p class="deleting">
+      <%= link_to "アカウントの削除" ,object,
+      method: :delete,data: {confirm: "本当に削除してもよろしいですか？"} %>
+    </p>
   </div>
 </div>
