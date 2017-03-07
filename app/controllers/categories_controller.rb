@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   def index
     #動画を取り出す
     theme = Category.find_by(id: params[:theme])
-    @videos = theme.videos
+    @videos = theme.videos.reorder(score: :desc)
   end
   
   

@@ -1,0 +1,24 @@
+<% @videos.each_with_index do |video , cnt| %>
+      <p>
+        カテゴリ :
+        <% video.categories.each_with_index do |category,count|%>
+        <%=" , " if count > 0  %>
+        <%=category.category%>
+        <%end%>
+      </p>
+      <h3>第<%= cnt + 1 %>位：　<%= video.title %></h3>
+      <div class="youtube-container">        
+        <iframe src="https://www.youtube.com/embed/<%= create_video_id video.url %>" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+      </div>
+      <p>シェア数: <%= video.score%></p>
+      <p><%= video.description%></p>
+      
+      <% if logged_in? %>
+        <%if current_user == video.user || admin_user? %>
+        <%= link_to "編集する",edit_video_path(video)%> | 
+        <%= link_to "削除する",video_path(video),method: :delete,
+                             data: {confirm: "本当に削除してもよろしいですか？"} %>
+        <%end%>
+      <%end%>
+      <hr>
+    <%end%>

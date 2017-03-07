@@ -15,6 +15,8 @@ gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
 #カテゴリの階層化 
 gem 'awesome_nested_set'
+#youtube api
+gem 'yt', '~> 0.28.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'
