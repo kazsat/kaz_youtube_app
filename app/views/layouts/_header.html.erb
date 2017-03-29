@@ -1,32 +1,45 @@
  <header class="navbar navbar-fixed-top navbar-default">
-      <div class="container">
-        <%= link_to "Youtube App", root_path, id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "ホーム", root_path %></li>
-        <% if logged_in? %>
-          <%if admin_user?%>  
-            <li><%= link_to "すべてのユーザー", all_users_path %></li>
-          <%end%>
-          <li><%= link_to "投稿する", new_video_path %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              アカウント <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "プロフィール", current_user %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "ログアウト", logout_path, method: "delete" %>
-              </li>
-            </ul>
+    <div class="container">
+      <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+     <%= link_to "Youtube App", root_path, id: "logo" %>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+    <li><%= link_to "ホーム", root_path %></li>
+    <% if logged_in? %>
+      <%if admin_user?%>  
+        <li><%= link_to "すべてのユーザー", all_users_path %></li>
+      <%end%>
+      <li><%= link_to "投稿する", new_video_path %></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          アカウント <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "プロフィール", current_user %></li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "ログアウト", logout_path, method: "delete" %>
           </li>
-        <% else %>
-          <li><%= link_to "会員登録",   signup_path %></li>
-          <li><%= link_to "ログイン",   login_path %></li>
-        <% end %>
-          <li><%= link_to "お問合せ", '#' %></li>
-          </ul>
-        </nav>
+        </ul>
+      </li>
+    <% else %>
+      <li><%= link_to "会員登録",   signup_path %></li>
+      <li><%= link_to "ログイン",   login_path %></li>
+    <% end %>
+      <li><%= link_to "お問合せ", '#' %></li>
+      </ul>
+    </nav>
+    </div>
     </div>
   </header>
+ 
+ 

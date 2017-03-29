@@ -1,10 +1,13 @@
 <% provide(:title, "ホーム")%>
 
-
-<ul>
+<div class="top-header">
+  <h2>カテゴリー</h2>
+</div>
+<ul class="home-ul">
   <% @static_pages.each do |category|%>
   <li class="all-categories">
     <%= link_to category.category, category_path(category.id) %>
   </li>
+  <br>
   <%end%>
 </ul>

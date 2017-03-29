@@ -194,9 +194,40 @@ input {
 }
 
 // homeページ
-.all-categories{
-  list-style:none;
+
+.container .home-ul{
+  -webkit-padding-start: 0;
 }
+.all-categories{
+  margin-bottom:10px;
+  display: inline-block;
+  list-style:none;
+  text-align:left;
+}
+
+.all-categories a {
+  padding: 5px 15px;
+  display: block;
+  color: #000;
+  border: 1px solid #888;
+  border-radius:10px;
+  &:hover{
+    text-decoration:none;
+    color: #777;
+  }
+}
+
+.top-header h2{
+  font-weight: bold;
+  text-align: left;
+  color: #444;
+  padding: 0.25em 0 0.5em 0.75em;
+  border-left: 6px solid #C52F24;
+  border-bottom: 1px solid #ccc;
+}
+
+
+
 
 // theme一覧ページ
 .list-theme li{
@@ -208,4 +239,16 @@ input {
   float:right;
   padding-top:20px;
   font-size:12px;
+}
+
+//　カテゴリーページ
+.adapt-height{
+  height: 100%;
+}
+
+.ellipsis{
+  white-space: nowrap;
+　overflow: hidden;
+　-o-text-overflow: ellipsis;
+  text-overflow:　ellipsis; 
 }
